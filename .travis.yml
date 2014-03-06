@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.0.0
+script:
+  - TRAVIS=true bundle exec rspec spec/
+gemfile:
+  # - gemfiles/Gemfile.rails-3.2.x
+  - Gemfile
+notifications:
+  email:
+    on_failure: change
+branches:
+  only:
+    - master
