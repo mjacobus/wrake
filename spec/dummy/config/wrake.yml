@@ -1,5 +1,9 @@
 test:
-  url: http://example.com
+  url: http://localhost:3000/wrake
+  username: jondoe
+  password: secret
+development:
+  url: http://localhost:3000/wrake
   username: jondoe
   password: secret
 

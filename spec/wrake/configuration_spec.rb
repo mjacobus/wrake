@@ -13,7 +13,7 @@ describe Wrake::Configuration do
       subject.from_file(Rails.root.join('config/wrake.yml'))
       expect(subject.username).to eq('jondoe')
       expect(subject.password).to eq('secret')
-      expect(subject.url).to eq('http://example.com')
+      expect(subject.url).to eq('http://localhost:3000/wrake')
     end
   end
 end
