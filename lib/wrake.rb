@@ -6,11 +6,7 @@ require "wrake/authorization/access_denied"
 module Wrake
 
   def self.config
-    @config ||= Configuration.new
-  end
-
-  def self.from_file
-    # config.from_file
+    @@config ||= Configuration.new
   end
 
   def self.configure(&block)

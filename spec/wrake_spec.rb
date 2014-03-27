@@ -15,6 +15,6 @@ describe Wrake, ".configure" do
       Wrake.configure do |config|
         config.username = 'username'
       end
-    end.to change { Wrake.config.username }.from(nil).to('username')
+    end.to change { Wrake.config.username }.from('jondoe').to('username')
   end
 end
