@@ -1,5 +1,4 @@
 require_dependency "wrake/application_controller"
-# require Rails.root.join('Rakefile')
 
 module Wrake
   class TasksController < ApplicationController
@@ -23,7 +22,7 @@ module Wrake
       def args
         data = params[:args].presence
 
-        if data.respond_to?(:split)
+        if data.is_a?(String)
           data = data.split(' ')
         end
 

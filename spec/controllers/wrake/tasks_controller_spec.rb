@@ -18,9 +18,15 @@ describe Wrake::TasksController do
         expect(response).to be_success
       end
 
-      it "invokes tasks with args" do
+      it "invokes tasks with args space separated" do
         expect(TaskTester).to receive(:run).at_least(:once).with('jon', 'doe')
         post :invoke, task_name: 'wrake_test:with_args', args: 'jon doe'
+        expect(response).to be_success
+      end
+
+      it "invokes tasks with args as array", :pending do
+        expect(TaskTester).to receive(:run).at_least(:once).with('jon', 'doe')
+        post :invoke, task_name: 'wrake_test:with_args', args: ['jon', 'doe']
         expect(response).to be_success
       end
     end

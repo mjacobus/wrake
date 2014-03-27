@@ -13,13 +13,15 @@ module Wrake
     end
 
     def invoke_task(task, data)
-      Response.new(perform_request(url_for("tasks/#{task}"), data))
+      perform_request(url_for("tasks/#{task}"), data)
     end
 
     def extend_data(data)
       data.tap do |args|
-        args[:username] = username
-        args[:password] = password
+        args[:basic_auth] = {
+          username: username,
+          password: password,
+        }
       end
     end
 

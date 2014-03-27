@@ -14,8 +14,7 @@ describe Wrake::Api, '#invoke_task' do
 
     expect(Wrake::Api::Request).to receive(:new).with("#{url}/tasks/print:full_name", {
       args: 'James Bond',
-      username: username,
-      password: password,
+      basic_auth: { username: username, password: password }
     }).and_return(response)
 
     api.invoke_task('print:full_name', args: "James Bond")

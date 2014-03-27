@@ -2,10 +2,11 @@ module Wrake
   class Api
     class Response
 
-      def initialize(request)
-      end
+      delegate :body, :code, :message, :message, :headers,
+        to: :@httparty_response
 
-      def body
+      def initialize(httparty_response)
+        @httparty_response = httparty_response
       end
 
     end
