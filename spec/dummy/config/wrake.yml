@@ -1,0 +1,5 @@
+test:
+  url: http://example.com
+  username: jondoe
+  password: secret
+

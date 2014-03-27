@@ -24,9 +24,10 @@ And then execute:
     $ bundle
     $ rails g wrake:install
 
-This will create the following file:
+This will create the following files:
 
 - ```config/wrake.yml``` - the configuration file is self explicative.
+- ```config/initializers/wrake.rb``` - the configuration file is self explicative.
 
 Also, you wil need to mount the engine:
 

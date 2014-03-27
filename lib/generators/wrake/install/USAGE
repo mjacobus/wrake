@@ -1,0 +1,9 @@
+Description:
+    Install config files
+
+Example:
+    rails generate wrake:install
+
+    This will create:
+        config/initializers/wrake.rb
+        config/wrake.yml
