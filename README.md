@@ -41,19 +41,16 @@ mount Wrake::Engine, at: 'wrake'
 
 ### Using API
 ```ruby
-api  = Wrake::Api.new(base_url: base_url, username: username, password: password)
+api  = Wrake::Api.new(url: base_url, username: username, password: password)
 
-# or you can instantiate the API with a config file
+# or to get the api with default configuration
 
-api = Wrake::Api.from_file(Rails.root.join('config', 'wrake.yml'))
+api = Wrake.api
 
-response = api.run('some:task', { param: 'value' })
+response = api.invoke_task('some:task', { param: 'value' })
 
-if response.success?
-  # ok
-else
-  puts response.error_message
-end
+puts response.code, response.headers, response.body, response.message
+
 ```
 
 ### Using the CLI
