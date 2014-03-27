@@ -12,7 +12,7 @@ module Wrake
       @params.fetch(:url)
     end
 
-    def invoke_task(task, data)
+    def invoke_task(task, data = {})
       perform_request(url_for("tasks/#{task}"), data)
     end
 
