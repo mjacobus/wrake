@@ -1,6 +1,7 @@
 require "wrake/engine"
 require "wrake/api"
 require "wrake/configuration"
+require "wrake/authorization/access_denied"
 
 module Wrake
 

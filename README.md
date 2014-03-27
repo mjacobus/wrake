@@ -59,17 +59,26 @@ end
 ### Using the CLI
 
 ```bash
-wrake some:task PARAMS="name=foo&lastname=bar"
+wrake cache:clean
+
+wrake mail:welcome new@user.com
 ```
 
-### Generating new tasks
+### Password protecting the API
 
-```bash
-rails g wrake:task some/task
+By default, the API is protected by Basic Auth. You could change the default behavior
+by overwriting the wrake_authorization method:
+
+```ruby
+class ApplicationController < ActionController::Base
+  def wrake_authorization
+    authenticate_or_request_with_http_basic do |username, password|
+      User.with_wrake_privileges.where(email: username, password: password).first!
+    end
+  end
+end
 ```
 
-This will create the file ```lib/tasks/some/task.rb``` and all you have to do is
-to implement it.
 
 ## TODO
 
