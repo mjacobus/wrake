@@ -10,6 +10,7 @@ describe Wrake, ".config" do
 end
 
 describe Wrake, ".configure" do
+
   it "yields the configuration" do
     expect do
       Wrake.configure do |config|
@@ -17,4 +18,38 @@ describe Wrake, ".configure" do
       end
     end.to change { Wrake.config.username }.from('jondoe').to('username')
   end
+
+end
+
+describe Wrake, ".api" do
+  subject(:api) { Wrake.api }
+
+  before do
+    Wrake.configure do |config|
+      config.url      = 'http://example.com'
+      config.username = 'jondoe'
+      config.password = 'secret'
+    end
+  end
+
+  it "returns a singleton api with default config" do
+    expect(api).to be_a(Wrake::Api)
+  end
+
+  it "caches the api" do
+    expect(api).to be(Wrake.api)
+  end
+
+  it "sets the correct url" do
+    expect(api.send(:url)).to eq('http://example.com')
+  end
+
+  it "sets the correct username" do
+    expect(api.send(:username)).to eq('jondoe')
+  end
+
+  it "sets the correct password" do
+    expect(api.send(:password)).to eq('secret')
+  end
+
 end

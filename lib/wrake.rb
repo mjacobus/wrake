@@ -13,4 +13,12 @@ module Wrake
     yield config
   end
 
+  def self.api
+    @@api ||= Api.new(
+      url: config.url,
+      username: config.username,
+      password: config.password
+    )
+  end
+
 end
