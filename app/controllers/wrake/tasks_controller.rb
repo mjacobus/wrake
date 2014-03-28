@@ -1,4 +1,5 @@
 require_dependency "wrake/application_controller"
+require_relative "../../../spec/support/task_tester"
 
 module Wrake
   class TasksController < ApplicationController
@@ -7,7 +8,9 @@ module Wrake
     before_filter :wrake_authorization
 
     def invoke
-      Rake::Task[task_name].invoke(*args)
+      @task_name = task_name
+      @args      = args
+      @return    = Rake::Task[task_name].invoke(*args)
     end
 
     def wrake_authorization
@@ -20,7 +23,7 @@ module Wrake
 
     protected
       def args
-        data = params[:args].presence
+        data = params[:args].presence || []
 
         if data.is_a?(String)
           data = data.split(' ')

@@ -1,4 +1,5 @@
 class TaskTester
-  def self.run(*)
+  def self.run(*args)
+    args
   end
 end

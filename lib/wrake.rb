@@ -1,4 +1,4 @@
-require "wrake/engine"
+require "wrake/engine" if defined?(Rails)
 require "wrake/api"
 require "wrake/configuration"
 require "wrake/authorization/access_denied"

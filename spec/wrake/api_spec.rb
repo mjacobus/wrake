@@ -13,7 +13,7 @@ describe Wrake::Api, '#invoke_task' do
     expect(response).to receive(:perform)
 
     expect(Wrake::Api::Request).to receive(:new).with("#{url}/tasks/print:full_name", {
-      args: 'James Bond',
+      query: {  args: 'James Bond' },
       basic_auth: { username: username, password: password }
     }).and_return(response)
 

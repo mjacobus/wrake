@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
+
+require 'wrake'
+require 'wrake/command'
+require "wrake/command/options"
+
+begin
+  options  = Wrake::Command::Options.new(ARGV)
+  command  = Wrake::Command.new(options)
+  response = command.execute
+
+  if response.code != 200
+    puts response.message
+    exit response.code
+  end
+rescue Wrake::Command::Options::Error => e
+  puts e.message
+  exit 1
+end
+
+exit

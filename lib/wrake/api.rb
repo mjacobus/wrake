@@ -12,23 +12,18 @@ module Wrake
       @params.fetch(:url)
     end
 
-    def invoke_task(task, data = {})
+     def invoke_task(task, data = {})
       perform_request(url_for("tasks/#{task}"), data)
     end
 
-    def extend_data(data)
-      data.tap do |args|
-        args[:basic_auth] = {
-          username: username,
-          password: password,
-        }
-      end
+    def prepare_data(data)
+      { query: data, basic_auth: { username: username, password: password } }
     end
 
     private
 
       def perform_request(path, data)
-        Request.new(path, extend_data(data)).perform
+        Request.new(path, prepare_data(data)).perform
       end
 
       def url_for(path = '/')

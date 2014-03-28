@@ -26,9 +26,7 @@ describe Wrake, ".api" do
 
   before do
     Wrake.configure do |config|
-      config.url      = 'http://example.com'
-      config.username = 'jondoe'
-      config.password = 'secret'
+      config.from_file Rails.root.join('config/wrake.yml')
     end
   end
 
@@ -41,7 +39,7 @@ describe Wrake, ".api" do
   end
 
   it "sets the correct url" do
-    expect(api.send(:url)).to eq('http://example.com')
+    expect(api.send(:url)).to eq('http://localhost:3000/wrake')
   end
 
   it "sets the correct username" do

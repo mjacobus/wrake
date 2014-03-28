@@ -47,7 +47,9 @@ api  = Wrake::Api.new(url: base_url, username: username, password: password)
 
 api = Wrake.api
 
-response = api.invoke_task('some:task', { param: 'value' })
+response = api.invoke_task('some:task', { args: 'a b c' })
+# or
+response = api.invoke_task('some:task', args: ['a', 'b', 'c'])
 
 puts response.code, response.headers, response.body, response.message
 
@@ -56,9 +58,9 @@ puts response.code, response.headers, response.body, response.message
 ### Using the CLI
 
 ```bash
-wrake cache:clean
+wrake cache:clean -c path/to/wrake.yml -e development
 
-wrake mail:welcome new@user.com
+wrake mail:welcome new@user.com -c path/to/wrake.yml
 ```
 
 ### Password protecting the API

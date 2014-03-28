@@ -2,27 +2,26 @@ require "spec_helper"
 
 describe Wrake::Api::Response do
   let(:headers) { Hash.new }
-  let(:httparty_response) do
-    double(body: 'body', code: 'code', message: 'message', headers: headers)
-  end
+
+  let(:response) { HTTParty.post('http://example.com', {}) }
 
   subject do
-    Wrake::Api::Response.new(httparty_response)
+    Wrake::Api::Response.new(response)
   end
 
   it "sets the correct response" do
-    expect(subject.body).to eq(httparty_response.body)
+    expect(subject.body).to eq(response.body)
   end
 
   it "sets the correct code" do
-    expect(subject.code).to eq(httparty_response.code)
+    expect(subject.code).to eq(response.code)
   end
 
   it "sets the correct message" do
-    expect(subject.message).to eq(httparty_response.message)
+    expect(subject.message).to eq(response.message)
   end
 
   it "sets the correct headers" do
-    expect(subject.headers).to eq(httparty_response.headers)
+    expect(subject.headers).to eq(response.headers)
   end
 end

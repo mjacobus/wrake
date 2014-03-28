@@ -3,7 +3,7 @@ PATH
   specs:
     wrake (0.0.1)
       httparty
-      rails (~> 4.0.3)
+      rails (>= 3.0.0, <= 5.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -44,6 +44,7 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.3)
     erubis (2.7.0)
+    fakeweb (1.3.0)
     hike (1.2.3)
     httparty (0.13.0)
       json (~> 1.8)
@@ -127,6 +128,7 @@ PLATFORMS
 
 DEPENDENCIES
   coveralls
+  fakeweb
   rspec-rails
   simplecov
   wrake!
